@@ -1,60 +1,53 @@
+const nominate = ['rock','scissors','paper'];
+
 const getUserChoice = userInput => {
-    userInput = userInput.toLowerCase();
-    if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb'){
-      return userInput;
-    }else{
-      console.log('error');
-    }
-  };
-  
-  function getComputerChoice(){
-    randomNumber = Math.floor(Math.random()*2);
-    if (randomNumber === 0){
-      return 'rock';
-    }else if(randomNumber === 1){
-      return 'paper';
-    }else if(randomNumber === 2){
-      return 'scissors';
-    }  
-  };
-  
-  function determineWinner(userChoice, computerChoice){
-    if (userChoice === 'bomb'){
+  userInput = userInput.toLowerCase();  
+  if (nominate.includes(userInput)){
+    return userInput;
+  }else{
+    console.log('error');
+  }
+};
+
+function getComputerChoice(){
+  randomNumber = Math.floor(Math.random()*3);
+  return nominate[randomNumber];
+};
+
+function determineWinner(userChoice, computerChoice){
+  switch(userChoice){
+    case 'bomb':
       return 'User Won';
-    };
-    if (userChoice === computerChoice){
+    case computerChoice:
       return 'tie';
-    };
-    if (userChoice === 'rock'){
+    case 'rock':
       if (computerChoice === 'paper'){
         return 'Computer Won';
       }else{
         return 'User Won';
       };
-    };
-    if (userChoice === 'paper'){
-      if(computerChoice === 'scissors'){
+    case 'paper':
+     if(computerChoice === 'scissors'){
         return 'Computer Won';
       }else{
         return 'User Won';
-      };
     };
-    if (userChoice === 'scissors'){
-      if(computerChoice === 'rock'){
-        return 'Computer Won';
-      }else{
+    case 'scissors':
+     if(computerChoice === 'rock'){
+       return 'Computer Won';
+     }else{
         return 'User Won';
-      };
-    };
+     };          
   };
-  
-  function playGame(userChoice){
-    userChoice = getUserChoice(userChoice);
-    computerChoice = getComputerChoice();
-    console.log(userChoice);
-    console.log(computerChoice);
-    console.log(determineWinner(userChoice, computerChoice));
-  }
-  
-  playGame('bomb');
-  
+};
+
+function playGame(userChoice){
+  userChoice = getUserChoice(userChoice);
+  computerChoice = getComputerChoice();
+  console.log('userChoice     : ' + userChoice);
+  console.log('computerChoice : ' + computerChoice);
+  console.log('Winner         : '  +determineWinner(userChoice, computerChoice));
+}
+
+playGame('paper');
+
