@@ -26,14 +26,14 @@ function pAequorFactory(num, dna){
       return this.dna;
     },    
     compareDNA(pAequor){
-      this.dna.reduce((total, currentValue, currentIndex, arr)=>{
+      const similarities = this.dna.reduce((total, currentValue, currentIndex, arr)=>{
         if (this.dna[currentIndex] === pAequor.dna[currentIndex]){
           return acc+1;
         }else{
           return acc;
         }
       })
-      console.log(`${((same / 15) * 100).toFixed()}% DNA in common.`);
+      console.log(`${((similarities / this.dna.length) * 100).toFixed(2)}% DNA in common.`);
     },
     willLikelySurvive(){
       let cOrg = 0;
