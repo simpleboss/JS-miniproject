@@ -36,20 +36,11 @@ function pAequorFactory(num, dna){
       console.log(`${((similarities / this.dna.length) * 100).toFixed(2)}% DNA in common.`);
     },
     willLikelySurvive(){
-      let cOrg = 0;
-      this.dna.forEach(element => {
-        if (element === 'C' || element === 'G'){
-          cOrg++
-        }        
-      });
-      if (((cOrg / 15) * 100).toFixed() > 60){
-        return true;
-      }else{
-        return false;
-      }
-    }    
+      const cOrg = this.dna.filter(element => element === 'C' || element === 'G');
+      return ((cOrg.length / this.dna.length) * 100).toFixed(2) > 60;  
+    },    
   }
-}
+};
 
 const pAequor =[]
 let i = 0;
