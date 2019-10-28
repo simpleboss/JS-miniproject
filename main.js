@@ -18,11 +18,11 @@ function pAequorFactory(num, dna){
     specimeNum: num,
     dna: dna,
     mutate(){
-      randomIndex = Math.floor(Math.random()*15);
-      const previousDnaRandomIndex =  this.dna[randomIndex];
+      randomIndex = Math.floor(Math.random()*this.dna.length);
+      const oldBase =  this.dna[randomIndex];
       do {
         dna[randomIndex] = returnRandBase();
-      }while(this.dna[randomIndex] !== previousDnaRandomIndex);
+      }while(this.dna[randomIndex] === oldBase);
       return this.dna;
     },
     compareDNA(pAequor){
