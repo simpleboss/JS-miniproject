@@ -24,14 +24,15 @@ function pAequorFactory(num, dna){
         dna[randomIndex] = returnRandBase();
       }while(this.dna[randomIndex] === oldBase);
       return this.dna;
-    },
+    },    
     compareDNA(pAequor){
-      let same = 0;
-      for (let i = 0; i < 15; i++) {
-        if (this.dna[i] === pAequor.dna[i]){
-          same ++
-        };
-      }
+      this.dna.reduce((total, currentValue, currentIndex, arr)=>{
+        if (this.dna[currentIndex] === pAequor.dna[currentIndex]){
+          return acc+1;
+        }else{
+          return acc;
+        }
+      })
       console.log(`${((same / 15) * 100).toFixed()}% DNA in common.`);
     },
     willLikelySurvive(){
