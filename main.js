@@ -44,18 +44,17 @@ function pAequorFactory(num, dna){
 
 const pAequor =[]
 let i = 0;
-do {
+while(i < 30) {
   let nominateDNA = pAequorFactory(i,mockUpStrand());
   if (nominateDNA.willLikelySurvive()){
-      pAequor.push(nominateDNA);
-      i++
+      pAequor.push(nominateDNA);      
   }
-}while(i < 30);
+  i++;
+};
 
-pAequor.forEach(element => {
-  console.log(element.dna);
+pAequor.forEach((element, i) => {
+  console.log(i + ' : ' +element.dna.join(' '));
 })
-
 
 
 
