@@ -15,29 +15,14 @@ function getComputerChoice(){
 };
 
 function determineWinner(userChoice, computerChoice){
-  switch(userChoice){
-    case 'bomb':
-      return 'User Won';
-    case computerChoice:
-      return 'tie';
-    case 'rock':
-      if (computerChoice === 'paper'){
-        return 'Computer Won';
-      }else{
-        return 'User Won';
-      };
-    case 'paper':
-     if(computerChoice === 'scissors'){
-        return 'Computer Won';
-      }else{
-        return 'User Won';
-    };
-    case 'scissors':
-     if(computerChoice === 'rock'){
-       return 'Computer Won';
-     }else{
-        return 'User Won';
-     };          
+  const userWinSituation = [['rock','scissors'],['scissors','paper'],['paper','rock']];
+  
+  if ([userChoice, computerChoice].include(userWinSituation)){
+    return 'User Won';
+  } else if (userChoice === computerChoice){
+    return 'tie';
+  } else {
+    return 'Computer Won';
   };
 };
 
