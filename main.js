@@ -16,8 +16,10 @@ function getComputerChoice(){
 
 function determineWinner(userChoice, computerChoice){
   const userWinSituation = [['rock','scissors'],['scissors','paper'],['paper','rock']];
-  
-  if ([userChoice, computerChoice].include(userWinSituation)){
+  const Choice = [userChoice, computerChoice];
+  console.log(Choice);
+  console.log(userWinSituation[2]);
+  if (Choice.includes(userWinSituation)){
     return 'User Won';
   } else if (userChoice === computerChoice){
     return 'tie';
